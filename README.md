@@ -4,8 +4,8 @@ Used [Create react app](https://github.com/facebook/create-react-app)
 
 ## Steps
 1. Clone the repo
-```javascript
-git clone
+```
+git clone https://github.com/elco45/number8_challenge.git
 ```
 
 2. Install dependencies
