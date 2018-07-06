@@ -24,6 +24,7 @@ const DayElement = Styled.div`
   line-height: 28px;
   font-size: 12px;
   border: 2px solid white;
+  border-radius: 8px;
 `;
 
 const Day = ({ dateType, day }) => (
