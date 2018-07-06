@@ -21,14 +21,14 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
-function showMonth(dates) {
+function showMonth(dates, countryCode) {
   if (dates.length > 0) {
     const startInvalidDays = dates[0].getDay();
     const endInvalidDays = dates[dates.length -1].getDay();
 
-    const invalidStart = addInvalidDays(startInvalidDays, 'start');
-    const validDates = addValidDays(dates);
-    const invalidEnd = addInvalidDays(endInvalidDays, 'end');
+    const invalidStart = addInvalidDays(startInvalidDays, `start-${dates[0].getMonth()}-${dates[0].getFullYear()}`);
+    const validDates = addValidDays(dates, countryCode);
+    const invalidEnd = addInvalidDays(6 - endInvalidDays, `end-${dates[0].getMonth()}-${dates[0].getFullYear()}`);
 
     let allDates = [];
     allDates = invalidStart.concat(validDates);
@@ -73,17 +73,17 @@ function showMonth(dates) {
   return <div />
 }
 
-function addValidDays(dates) {
-  let hd = new Holidays('US');
+function addValidDays(dates, countryCode) {
+  let hd = new Holidays(countryCode.toUpperCase());
   let validDays = [];
   dates.forEach((date) => {
     const number =date.getDate()
     if (hd.isHoliday(date)) {
-      validDays.push(<Day dateType='H' day={number} key={date}/>)
+      validDays.push(<Day dateType='H' day={number} key={date} />)
     } else if (date.getDay() === 0 || date.getDay() === 6) {
-      validDays.push(<Day dateType='W' day={number} key={date}/>)
+      validDays.push(<Day dateType='W' day={number} key={date} />)
     } else {
-      validDays.push(<Day dateType='N' day={number} />)
+      validDays.push(<Day dateType='N' day={number} key={date} />)
     }
   })
   return validDays;
@@ -97,12 +97,17 @@ function addInvalidDays(startInvalidDays, key) {
   return invalidDays;
 }
 
-const Month = ({ dates }) => (
-  showMonth(dates)
+const Month = ({ dates, countryCode }) => (
+  showMonth(dates, countryCode)
 )
 
 Month.propTypes = {
   dates: PropTypes.any,
+  countryCode: PropTypes.string,
+};
+
+Month.defaultProps = {
+  countryCode: 'US'
 };
 
 export default Month;
