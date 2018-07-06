@@ -5,13 +5,13 @@ import Styled from 'styled-components';
 function getColor(dateType) {
   switch (dateType) {
     case 'H': // Holiday
-      return 'red';
+      return '#FF750C';
     case 'N': // Normal
-      return 'green';
+      return '#C5DC89';
     case 'W': // Weekend
-      return 'yellow';
+      return '#FEFD05';
     default:
-      return 'gray';
+      return '#CCCCCB';
   }
 }
 
