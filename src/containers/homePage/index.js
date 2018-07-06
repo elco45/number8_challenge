@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Moment from "moment";
-import Styled from "styled-components";
 import Month from "../../components/Month";
 
 class Home extends Component {
