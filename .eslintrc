@@ -1,0 +1,34 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:meteor/recommended",
+    "standard"
+  ],
+  "env": {
+    "meteor": true,
+    "browser": true
+  },
+  "plugins": [
+    "import",
+    "meteor"
+  ],
+  "rules": {
+    "semi": [2, "always"],
+    "import/no-extraneous-dependencies": ["error", {
+        "devDependencies": [
+          "imports/**/**/**/**tests.**"
+        ]
+      }
+    ],
+    "object-shorthand": ["error", "consistent"],
+    "func-names": ["error", "as-needed"],
+    "no-alert": 0
+  },
+  "settings": {
+    "import/resolver": "meteor"
+  }
+}
