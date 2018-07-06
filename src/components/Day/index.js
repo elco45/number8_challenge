@@ -23,21 +23,21 @@ const DayElement = Styled.div`
   vertical-align: middle;
   line-height: 28px;
   font-size: 12px;
-  border: 2px solid white;
-  border-radius: 8px;
+  border: 1px solid white;
+  border-radius: 4px;
 `;
 
 const Day = ({ dateType, day }) => (
   <DayElement
     backgroundColor={getColor(dateType)}
   >
-    {day}
+    {day ? day : ''}
   </DayElement>
 );
 
 Day.propTypes = {
   dateType: PropTypes.string,
-  day: PropTypes.string.isRequired
+  day: PropTypes.number,
 };
 
 export default Day;

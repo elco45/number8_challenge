@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Day from './components/Day';
+import HomePage from './containers/homePage';
 
 class App extends Component {
   render() {
@@ -12,10 +12,7 @@ class App extends Component {
           <h1 className="App-title">Number 8 Challenge</h1>
         </header>
         <div>
-          <Day
-            dateType='N'
-            day='31'
-          />
+          <HomePage />
         </div>
       </div>
     );
